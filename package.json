@@ -1,0 +1,25 @@
+{
+  "name": "tupu-canvas-helper",
+  "version": "1.0.0",
+  "description": "heatmap、track、orientation",
+  "main": "index.js",
+  "scripts": {
+    "test": "",
+    "build": "parcel index.js --global tupuCanvasTools --out-file tupu-canvas-helper.js",
+    "build-prod": "NODE_ENV=production parcel index.js --global tupuCanvasTools --out-file tupu-canvas-helper.min.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.tuputech.com:jeff/tupu-canvas-helper.git"
+  },
+  "keywords": [
+    "canvas、heatmap"
+  ],
+  "author": "jeff",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "parcel-bundler": "^1.12.3"
+  }
+}
