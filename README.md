@@ -1,7 +1,7 @@
 Tupu-canvas-helper
 ==================================================
 
-如何使用
+UMD使用方式
 --------------------------------------
 
 1.  引入资源
@@ -14,7 +14,7 @@ Tupu-canvas-helper
 
 若浏览器不支持Promise则需要引入[promise-polyfill](https://www.npmjs.com/package/promise-polyfill)
 
-2. 新建canvas标签
+2.  新建canvas标签
 
 ```html
 <body>
@@ -25,7 +25,7 @@ Tupu-canvas-helper
 </body>
 ```
 
-3. 调用相关api
+3.  调用相关api
 
 ```javascript
     const data = window.canvanTestData
@@ -92,4 +92,24 @@ Tupu-canvas-helper
     }).then(() => {
         drawLayoutMappings(canvas, layoutMappings)
     })
+```
+
+webpack + babel使用方式
+--------------------------------------
+
+1.  添加到 package.json
+
+```
+"dependencies": {
+    // ...
+    "tupu-canvas-helper": "git+ssh://git@github.com:tuputech/tupu-canvas-helper.git"
+    // ...
+}
+```
+
+2.  调用相关api
+
+```javascript
+import { drawHeatmap, drawPolygon, drawText } from "tupu-canvas-helper";
+...
 ```
