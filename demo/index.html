@@ -1,0 +1,92 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fafafa">
+  <script type="text/javascript" src="../dist/tupu-canvas-helper.js"></script>
+  <script type="text/javascript" src="./data.js"></script>
+</head>
+
+<body>
+  <!--[if IE]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
+
+  <!-- Add your site or application content here -->
+  <!-- <p>Hello world! This is HTML5 Boilerplate.</p> -->
+  <canvas width="950" height="560" id="canvasTest" />
+
+  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
+  <script>
+    const data = window.canvanTestData
+    const { drawHeatmap, drawPolygon, drawText } = tupuCanvasTools
+    const { points, domains, snapshot, layoutMappings } = data
+    const canvas = document.getElementById('canvasTest')
+    const path = domains.original + snapshot
+
+    function getPolygonExtreamPoints(positions) {
+        if (!positions || !positions.length) {
+            return null
+        }
+        let l = 1,
+            r = 0,
+            t = 1,
+            b = 0
+        positions.map(([x, y]) => {
+            if (x < l) {
+                l = x
+            }
+            if (x > r) {
+                r = x
+            }
+            if (y < t) {
+                t = y
+            }
+            if (y > b) {
+                b = y
+            }
+        })
+        return { l, r, t, b }
+    }
+
+    function drawLayoutMappings(canvas, mappings) {
+        const { CIDs } = data
+        CIDs.map((CID) => {
+            const camName = CID
+
+            mappings[CID] && mappings[CID].map(({ layoutPoints, name }) => {
+                const extreamPoints = getPolygonExtreamPoints(layoutPoints)
+                const centerX = (extreamPoints.l + extreamPoints.r) / 2
+                const centerY = (extreamPoints.t + extreamPoints.b) / 2
+                drawPolygon(canvas, layoutPoints, { color: '#EB4734', lineWidth: 2 })
+                drawText(canvas, name || camName, [centerX, centerY], {
+                    fontSize: 12,
+                    color: '#666',
+                    border: {
+                        padding: [4, 8],
+                        radius: 4,
+                        width: 2,
+                        color: '#F94236',
+                        backgroundColor: 'rgba(255,255,255,0.7)',
+                    },
+                })
+            })
+        })
+    }
+
+    drawHeatmap({
+        points,
+        path,
+        canvas,
+        radius: 20, //热力点半径
+    }).then(() => {
+        drawLayoutMappings(canvas, layoutMappings)
+    })
+  </script>
+</body>
+
+</html>

@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "",
-    "build": "parcel index.js --global tupuCanvasTools --out-file tupu-canvas-helper.js",
-    "build-prod": "NODE_ENV=production parcel index.js --global tupuCanvasTools --out-file tupu-canvas-helper.min.js"
+    "build": "parcel index.js --no-hmr --global tupuCanvasTools --out-file tupu-canvas-helper.js",
+    "build-prod": "NODE_ENV=production parcel index.js --no-hmr --global tupuCanvasTools --out-file tupu-canvas-helper.min.js"
   },
   "repository": {
     "type": "git",
