@@ -102,7 +102,7 @@ webpack + babel使用方式
 ```
 "dependencies": {
     // ...
-    "tupu-canvas-helper": "git+ssh://git@github.com:tuputech/tupu-canvas-helper.git"
+    "tupu-canvas-helper": "git+ssh://git@git.tuputech.com:frontend/tupu-canvas-helper.git"
     // ...
 }
 ```
