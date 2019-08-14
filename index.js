@@ -209,7 +209,7 @@ export function drawText(
         border,
     } = {}
 ) {
-    const { clientWidth: w, clientHeight: h } = canvas
+    const { width: w, height: h } = canvas
     const [x, y] = usePercent ? getAbsPoint(centerPoint, w, h) : centerPoint
     const ctx = canvas.getContext('2d')
     if (border) {
@@ -271,7 +271,7 @@ export function drawPolygon(
     points,
     { color = 'red', usePercent = true, lineWidth, backgroundColor }
 ) {
-    const { clientWidth: w, clientHeight: h } = canvas
+    const { width: w, height: h } = canvas
     const l = points.length
     const ctx = canvas.getContext('2d')
     ctx.beginPath()
@@ -306,7 +306,7 @@ export function drawRoundRect(
         usePercent = true,
     } = {}
 ) {
-    const { clientWidth: w, clientHeight: h } = canvas
+    const { width: w, height: h } = canvas
     const ctx = canvas.getContext('2d')
     const [x, y] = usePercent ? getAbsPoint(leftTopPoint, w, h) : leftTopPoint
     ctx.beginPath()
@@ -335,11 +335,11 @@ export function drawRect(
     leftTopPoint,
     { width, height, lineWidth, lineColor = 'red', backgroundColor, usePercent = true }
 ) {
-    const { clientWidth, clientHeight } = canvas
+    const { width: canvasWidth, height: canvasHeight } = canvas
     const ctx = canvas.getContext('2d')
-    const [x, y] = usePercent ? getAbsPoint(leftTopPoint, clientWidth, clientHeight) : leftTopPoint
-    const w = usePercent ? width * clientWidth : width
-    const h = usePercent ? height * clientHeight : height
+    const [x, y] = usePercent ? getAbsPoint(leftTopPoint, canvasWidth, canvasHeight) : leftTopPoint
+    const w = usePercent ? width * canvasWidth : width
+    const h = usePercent ? height * canvasHeight : height
 
     if (backgroundColor) {
         ctx.fillStyle = backgroundColor
