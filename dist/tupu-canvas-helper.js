@@ -1164,8 +1164,8 @@ function drawText(canvas) {
       usePercent = _ref6$usePercent === void 0 ? true : _ref6$usePercent,
       border = _ref6.border;
 
-  var w = canvas.clientWidth,
-      h = canvas.clientHeight;
+  var w = canvas.width,
+      h = canvas.height;
 
   var _ref7 = usePercent ? getAbsPoint(centerPoint, w, h) : centerPoint,
       _ref8 = _slicedToArray(_ref7, 2),
@@ -1253,8 +1253,8 @@ function drawPolygon(canvas, points, _ref10) {
       usePercent = _ref10$usePercent === void 0 ? true : _ref10$usePercent,
       lineWidth = _ref10.lineWidth,
       backgroundColor = _ref10.backgroundColor;
-  var w = canvas.clientWidth,
-      h = canvas.clientHeight;
+  var w = canvas.width,
+      h = canvas.height;
   var l = points.length;
   var ctx = canvas.getContext('2d');
   ctx.beginPath();
@@ -1293,8 +1293,8 @@ function drawRoundRect(canvas, leftTopPoint) {
       _ref11$usePercent = _ref11.usePercent,
       usePercent = _ref11$usePercent === void 0 ? true : _ref11$usePercent;
 
-  var w = canvas.clientWidth,
-      h = canvas.clientHeight;
+  var w = canvas.width,
+      h = canvas.height;
   var ctx = canvas.getContext('2d');
 
   var _ref12 = usePercent ? getAbsPoint(leftTopPoint, w, h) : leftTopPoint,
@@ -1334,17 +1334,17 @@ function drawRect(canvas, leftTopPoint, _ref14) {
       backgroundColor = _ref14.backgroundColor,
       _ref14$usePercent = _ref14.usePercent,
       usePercent = _ref14$usePercent === void 0 ? true : _ref14$usePercent;
-  var clientWidth = canvas.clientWidth,
-      clientHeight = canvas.clientHeight;
+  var canvasWidth = canvas.width,
+      canvasHeight = canvas.height;
   var ctx = canvas.getContext('2d');
 
-  var _ref15 = usePercent ? getAbsPoint(leftTopPoint, clientWidth, clientHeight) : leftTopPoint,
+  var _ref15 = usePercent ? getAbsPoint(leftTopPoint, canvasWidth, canvasHeight) : leftTopPoint,
       _ref16 = _slicedToArray(_ref15, 2),
       x = _ref16[0],
       y = _ref16[1];
 
-  var w = usePercent ? width * clientWidth : width;
-  var h = usePercent ? height * clientHeight : height;
+  var w = usePercent ? width * canvasWidth : width;
+  var h = usePercent ? height * canvasHeight : height;
 
   if (backgroundColor) {
     ctx.fillStyle = backgroundColor;
